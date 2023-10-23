@@ -28,17 +28,6 @@ public class Movement : MonoBehaviour
         HandleInput();
         HandleMovement();
 
-        if (Input.GetKey(KeyCode.W))
-            _inputDirection = Vector2.up;
-        else if (Input.GetKey(KeyCode.S))
-            _inputDirection = Vector2.down;
-        else if (Input.GetKey(KeyCode.A))
-            _inputDirection = Vector2.left;
-        else if (Input.GetKey(KeyCode.D))
-            _inputDirection = Vector2.right;
-        else 
-            _inputDirection = Vector2.zero;
-
         /*
         if (Input.GetKey(KeyCode.W))
         {
