@@ -62,6 +62,8 @@ public class Movement : MonoBehaviour
         targetVelocity = new Vector2(x: _inputDirection.x * Speed, y: _inputDirection.y * Speed);
 
         _rigidbody2D.velocity = Vector2.SmoothDamp(_rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+
+        transform.rotation= Quaternion.LookRotation(Vector3.forward, upwards:(Vector3)targetVelocity);
     }
 
     protected virtual void HandleInput()

@@ -7,6 +7,6 @@ public class PlayerMovement : Movement
     protected override void HandleInput()
     {
         _inputDirection = new Vector2(x: Input.GetAxis("Horizontal"), y: Input.GetAxis("Vertical"));
-        Debug.Log("Input Detected");
+        Debug.Log("Player Input Detected");
     }
 }
