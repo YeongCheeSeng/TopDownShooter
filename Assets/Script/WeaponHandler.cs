@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHandler : MonoBehaviour
+public class WeaponHandler : Weapon
 {
     public Weapon CurrentWeapon;
     public Transform GunPosition;
+
 
     protected bool _tryShoot = false;
 
@@ -37,7 +38,7 @@ public class WeaponHandler : MonoBehaviour
 
     public void EquipWeapon(Weapon weapon)
     {
-        if(weapon== null) 
+        if(weapon == null) 
             return; 
         
         CurrentWeapon = weapon;

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEditor;
 using UnityEngine;
 using static Weapon;
 
 public class PlayerWeaponHandler : WeaponHandler
 {
-    public FireModes _mode;
+    public FireModes Mode;
+    public float SingleShot = 1f;
 
     public enum FireModes
     {
@@ -16,11 +19,26 @@ public class PlayerWeaponHandler : WeaponHandler
 
     protected override void HandleInput()
     {
-        base.HandleInput();
-
-        if (_mode == FireModes.SingleFire)
+        if (Mode == FireModes.SingleFire)
         {
+            Debug.Log("Single Fire Mode");
             if (Input.GetButtonDown("Fire1"))
+            {
+                _tryShoot = false;
+                Shoot();
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                _tryShoot = false;
+            }
+
+        }
+
+        if (Mode == FireModes.AutoFire)
+        {
+            Debug.Log("Auto Fire Mode");
+            if (Input.GetButton("Fire1"))
             {
                 _tryShoot = true;
             }
@@ -31,6 +49,20 @@ public class PlayerWeaponHandler : WeaponHandler
             }
         }
 
+        if (Mode == FireModes.BurstFire)
+        {
+            Debug.Log("Burst Fire Mode");
+            if (Input.GetButton("Fire1"))
+            {
+                _tryShoot = true;
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                _tryShoot = false;
+            }
+        }
 
     }
 }
+

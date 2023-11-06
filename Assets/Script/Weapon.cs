@@ -10,14 +10,7 @@ public class Weapon : MonoBehaviour
 
     private float _timer = 0f;
     private bool _canShoot = true;
-    public FireModes _mode;
-
-    public enum FireModes
-    {
-        SingleFire, // =0
-        AutoFire,   // =1
-        BurstFire   // =2
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -51,5 +44,6 @@ public class Weapon : MonoBehaviour
         GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
     }
 
+    
 }
 

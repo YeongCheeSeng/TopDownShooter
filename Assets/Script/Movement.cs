@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D _rigidbody2D;
     Collider2D _collider2D;
 
-    public float Speed = 10;
+    public float MovementSpeed = 10;
     protected const float m_MovementSmoothing = 0.05f;
 
     Vector2 m_Velocity = Vector2.zero;
@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
             return;
 
         Vector2 targetVelocity = Vector2.zero;
-        targetVelocity = new Vector2(x: _inputDirection.x * Speed, y: _inputDirection.y * Speed);
+        targetVelocity = new Vector2(x: _inputDirection.x * MovementSpeed, y: _inputDirection.y * MovementSpeed);
 
         _rigidbody2D.velocity = Vector2.SmoothDamp(_rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
