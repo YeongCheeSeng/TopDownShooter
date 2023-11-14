@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
     Rigidbody2D _rigidbody2D;
     Collider2D _collider2D;
 
@@ -14,6 +16,7 @@ public class Movement : MonoBehaviour
 
     Vector2 m_Velocity = Vector2.zero;
     protected Vector2 _inputDirection;
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +66,7 @@ public class Movement : MonoBehaviour
 
         _rigidbody2D.velocity = Vector2.SmoothDamp(_rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
-        transform.rotation= Quaternion.LookRotation(Vector3.forward, upwards:(Vector3)targetVelocity);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, upwards: (Vector3)targetVelocity);
     }
 
     protected virtual void HandleInput()

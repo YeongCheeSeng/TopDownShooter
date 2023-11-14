@@ -1,16 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
-public class PlayerMovement : Movement
+public class TankMovement : Movement
 {
     protected override void HandleInput()
     {
-
         _inputDirection = new Vector2(x: Input.GetAxis("Horizontal"), y: Input.GetAxis("Vertical"));
-        Debug.Log("Player Input Detected");
-
+        Debug.Log("Tank Input Detected");
     }
 }

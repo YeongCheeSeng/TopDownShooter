@@ -7,6 +7,7 @@ public class WeaponHandler : Weapon
     public Weapon CurrentWeapon;
     public Transform GunPosition;
 
+    public Vector2 PointerPosition { get; set; }
 
     protected bool _tryShoot = false;
 
@@ -14,7 +15,10 @@ public class WeaponHandler : Weapon
     void Update()
     {
         HandleInput();
-        HandleWeapon();   
+        HandleWeapon();
+
+        transform.right = (PointerPosition - (Vector2)transform.position).normalized;
+
     }
 
     protected virtual void HandleInput()
