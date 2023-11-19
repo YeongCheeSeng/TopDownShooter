@@ -10,12 +10,11 @@ public class Projectile : MonoBehaviour
     public float PushForce = 50f;
     //public float LifeTime = 1f;
     public Cooldown LifeTime;
-    public DamageOnTouch _damageOnTouch;
 
     public LayerMask TargetLayerMask;
 
+    private DamageOnTouch _damageOnTouch;
     private Rigidbody2D _rigidbody;
-    private float _timer = 0f;
 
     private void Start()
     {
@@ -26,13 +25,14 @@ public class Projectile : MonoBehaviour
 
         _rigidbody.AddRelativeForce(new Vector2(x: 0f, y: Speed));
 
-        LifeTime.StartCooldown();
 
         _damageOnTouch = GetComponent<DamageOnTouch>();
 
         // subscribing
         if (_damageOnTouch != null)
             _damageOnTouch.OnHit += Die;
+
+        LifeTime.StartCooldown();
     }
 
     private void Update()

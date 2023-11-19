@@ -10,19 +10,21 @@ public class Health : MonoBehaviour
     public delegate void ResetEvent();
     public ResetEvent OnHitReset;
 
-    public float MaxHealth = 10f;
-    public Cooldown Invulnerable;
     public float CurrentHealth
     {
         get { return _currentHealth; }
     }
+
+    public float MaxHealth = 10f;
+
+    public Cooldown Invulnerable;
 
     private float _currentHealth = 10f;
     private bool _canDamage = true;
 
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ResetInvulnerable();
     }
@@ -60,6 +62,6 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

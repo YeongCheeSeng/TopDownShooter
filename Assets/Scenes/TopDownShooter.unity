@@ -229,8 +229,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1210110837555340540, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1210110837555340540, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518427585233288256, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2241911721334643828, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_Name
@@ -255,6 +263,14 @@ PrefabInstance:
     - target: {fileID: 3719487326859566212, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: AutofireShootInterval.Duration
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206082411584125470, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255482584552272594, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6893864198507890246, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_LocalScale.x
@@ -325,12 +341,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 197321190}
     - target: {fileID: 8575937320789529227, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575937320789529227, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: Projectile
       value: 
       objectReference: {fileID: 4470639652382083627, guid: 115bbd2067a2de347b7e1bffe7d57b66, type: 3}
     - target: {fileID: 8575937320789529227, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: SingleShot
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919008582778388685, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -381,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576472210801102794, guid: edb7d20ad66f22b4c9ce46fee2e7b7f2, type: 3}
       propertyPath: MovementSpeed
-      value: 5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4612341077303053027, guid: edb7d20ad66f22b4c9ce46fee2e7b7f2, type: 3}
       propertyPath: m_Layer

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7226420346693728478}
   - component: {fileID: 3278139653737812120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 421804572814984284}
   - component: {fileID: 2548749668697033162}
   - component: {fileID: -5232321815795280081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +138,7 @@ MonoBehaviour:
   LifeTime:
     CurrentProgress: 0
     Duration: 1
+  _damageOnTouch: {fileID: 0}
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5440a9e379dae1b45907670a419a7a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  damage: 1
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 72

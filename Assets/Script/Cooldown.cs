@@ -62,7 +62,7 @@ public class Cooldown
         while (_currentduration > 0)
         {
             _currentduration -= Time.deltaTime;
-            CurrentProgress = Cooldown.Progress.InProgress;
+            CurrentProgress = Progress.InProgress;
 
             yield return null;
         }
@@ -70,6 +70,6 @@ public class Cooldown
         _currentduration = 0f;
         _IsOnCooldown = false;
 
-        CurrentProgress = Cooldown.Progress.Finished;
+        CurrentProgress = Progress.Finished;
     }
 }
