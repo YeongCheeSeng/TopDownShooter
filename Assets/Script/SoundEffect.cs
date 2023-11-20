@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundEffect : WeaponHandler
+public class SoundEffect : MonoBehaviour
 {
     public AudioSource _AudioSource;
 
@@ -15,8 +15,7 @@ public class SoundEffect : WeaponHandler
     // Update is called once per frame
     void Update()
     {
-        if (_tryShoot == true)
-            PlaySoundEffect();
+         PlaySoundEffect();
     }
 
     public void PlaySoundEffect()
