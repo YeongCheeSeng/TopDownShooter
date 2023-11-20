@@ -15,12 +15,8 @@ public class SoundEffect : WeaponHandler
     // Update is called once per frame
     void Update()
     {
-        if (_AudioSource == null)
-            return;
-
         if (_tryShoot == true)
             PlaySoundEffect();
-
     }
 
     public void PlaySoundEffect()

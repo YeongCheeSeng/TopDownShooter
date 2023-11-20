@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     public Transform SpawnPos;
     public float Interval = 0.1f;
     public Cooldown AutofireShootInterval;
-    
 
     private float _timer = 0f;
     private bool _canShoot = true;
@@ -62,7 +61,5 @@ public class Weapon : MonoBehaviour
 
         AutofireShootInterval.StartCooldown();
     }
-
-    
 }
 

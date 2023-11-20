@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour
     private DamageOnTouch _damageOnTouch;
     private Rigidbody2D _rigidbody;
 
+    public AudioSource GunfireSound;
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -33,6 +35,8 @@ public class Projectile : MonoBehaviour
             _damageOnTouch.OnHit += Die;
 
         LifeTime.StartCooldown();
+
+        GunfireSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -48,6 +52,7 @@ public class Projectile : MonoBehaviour
         if (LifeTime.CurrentProgress != Cooldown.Progress.Finished)
             return;
 
+        PlayGunfireSound();
         Die();
     }
 
@@ -59,5 +64,10 @@ public class Projectile : MonoBehaviour
 
         LifeTime.StopCoolDown();
         Destroy(gameObject);
+    }
+
+    public void PlayGunfireSound()
+    {
+        GunfireSound.Play();
     }
 }

@@ -10,13 +10,10 @@ public class EnemyMovement : Movement
 
     protected override void HandleInput() 
     {
-        if (Target != null)
-        {
-            Target = GameObject.FindWithTag("Player").transform;
-        }
-
         if (Target == null)
             return;
+
+        Target = GameObject.FindWithTag("Player").transform;
 
         _inputDirection = (Target.position - transform.position).normalized;
     }
