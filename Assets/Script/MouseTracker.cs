@@ -14,8 +14,6 @@ public class MouseTracker : MonoBehaviour
 
         transform.up = direction;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, upwards: (Vector3)direction);
-
         Debug.Log("mouse detected");
     }
 }
