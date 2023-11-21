@@ -12,6 +12,14 @@ public class DamageOnTouch : MonoBehaviour
 
     public LayerMask TargetLayerMask;
 
+    public AudioSource Sound;
+
+
+    private void Start()
+    {
+        Sound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!((TargetLayerMask.value & (1 << col.gameObject.layer)) > 0))
@@ -32,6 +40,7 @@ public class DamageOnTouch : MonoBehaviour
             targetRigidbody.AddForce((col.transform.position - transform.position).normalized * PushForce);
         }
 
+        PlaySound();
         TryDamage(targetHealth);
     }
 
@@ -40,5 +49,10 @@ public class DamageOnTouch : MonoBehaviour
         targetHealth.Damage(Damage, transform.gameObject);
         Debug.Log("Hit " + targetHealth);
         OnHit?.Invoke();
+    }
+
+    private void PlaySound()
+    {
+        Sound.Play();
     }
 }

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  Speed: 1000
+  Speed: 2000
   PushForce: 50
   LifeTime:
     CurrentProgress: 0
@@ -142,7 +142,6 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  GunfireSound: {fileID: -6789248830682469826}
 --- !u!61 &421804572814984284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,11 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5440a9e379dae1b45907670a419a7a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
+  Damage: 2
   PushForce: 10
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 72
+  Sound: {fileID: 0}
 --- !u!82 &-6789248830682469826
 AudioSource:
   m_ObjectHideFlags: 0
