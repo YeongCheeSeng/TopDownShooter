@@ -149,13 +149,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94033283}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7671875, w: 0.64142287}
-  m_LocalPosition: {x: 0, y: -0.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7627127, w: 0.6467375}
+  m_LocalPosition: {x: 0, y: -0.6, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1425089247}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 100.204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -99.408}
 --- !u!212 &94033285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0b57cd6efd060714fb7d635814d7ca7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.72, y: 1.24}
@@ -336,7 +336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 238369673886290544, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7191173
+      value: 0.7267705
       objectReference: {fileID: 0}
     - target: {fileID: 238369673886290544, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_LocalRotation.x
@@ -348,11 +348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 238369673886290544, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.69488883
+      value: 0.6868804
       objectReference: {fileID: 0}
     - target: {fileID: 238369673886290544, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 88.037
+      value: 86.767
       objectReference: {fileID: 0}
     - target: {fileID: 575432201626630285, guid: b7c3f3b51f05e0747a9c394d9a74d874, type: 3}
       propertyPath: m_Enabled
@@ -853,7 +853,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
