@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageOnTouch : MonoBehaviour
@@ -10,21 +8,32 @@ public class DamageOnTouch : MonoBehaviour
     public float Damage = 1f;
     public float PushForce = 10f;
 
-    public LayerMask TargetLayerMask;
+    public GameObject[] DamagableFeedback;
+    public GameObject[] AnythingFeedback;
 
-    public AudioSource Sound;
+
+    public LayerMask TargetLayerMask;
 
 
     private void Start()
     {
-        Sound = GetComponent<AudioSource>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!((TargetLayerMask.value & (1 << col.gameObject.layer)) > 0))
-            return;
+        if (((TargetLayerMask.value & (1 << col.gameObject.layer)) > 0))
+        {
+            Damagable(col);
+        }
+        else
+        {
+            HitAnything(col);
+        }    
+    }
 
+    private void Damagable(Collider2D col)
+    {
         Debug.Log("target hit");
         Health targetHealth = col.gameObject.GetComponent<Health>();
 
@@ -40,8 +49,23 @@ public class DamageOnTouch : MonoBehaviour
             targetRigidbody.AddForce((col.transform.position - transform.position).normalized * PushForce);
         }
 
-        PlaySound();
         TryDamage(targetHealth);
+        SpawnFeedback(DamagableFeedback);
+        Debug.Log("Hit Damagable");
+    }
+
+    private void HitAnything(Collider2D col)
+    {
+        Rigidbody2D targetRigidbody = col.gameObject.GetComponent<Rigidbody2D>();
+
+        if (targetRigidbody != null)
+        {
+            targetRigidbody.AddForce((col.transform.position - transform.position).normalized * PushForce);
+        }
+
+        OnHit?.Invoke();
+        SpawnFeedback(AnythingFeedback);
+        Debug.Log("Hit Anything");
     }
 
     private void TryDamage(Health targetHealth)
@@ -51,8 +75,12 @@ public class DamageOnTouch : MonoBehaviour
         OnHit?.Invoke();
     }
 
-    private void PlaySound()
+
+    void SpawnFeedback(GameObject[] Feedbacks)
     {
-        Sound.Play();
+        foreach (var feedback in Feedbacks) 
+        {
+            GameObject.Instantiate(feedback, transform.position, transform.rotation);
+        }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public GameObject[] Feedback;
+
     public GameObject Projectile;
     public Transform SpawnPos;
     public float Interval = 0.1f;
@@ -60,6 +62,16 @@ public class Weapon : MonoBehaviour
         //GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
 
         AutofireShootInterval.StartCooldown();
+
+        SpawnFeedback();
+    }
+
+    void SpawnFeedback()
+    {
+        foreach (var feedback in Feedback) 
+        {
+             GameObject.Instantiate(feedback, SpawnPos.position, SpawnPos.rotation);
+        }
     }
 }
 

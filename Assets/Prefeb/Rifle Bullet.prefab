@@ -228,10 +228,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 2
   PushForce: 10
+  DamagableFeedback:
+  - {fileID: 7374183406761456888, guid: 93d41bae3074d9b4fa99140f9a2f81b3, type: 3}
+  - {fileID: 2389388949332663091, guid: 9b6811987a4393245b13f24129a7c440, type: 3}
+  AnythingFeedback:
+  - {fileID: 7895365830353286403, guid: 92e829a38fc0cba40a3fe25fddfeebff, type: 3}
+  - {fileID: 4686238259727897946, guid: 024eb1460c1104d4facfc3b4302df54a, type: 3}
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 72
-  Sound: {fileID: 0}
 --- !u!82 &-6789248830682469826
 AudioSource:
   m_ObjectHideFlags: 0
