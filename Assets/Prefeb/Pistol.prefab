@@ -246,6 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da61335f0cb12fe4da11103d6f2a17f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Feedback: []
   Projectile: {fileID: 8858573697091678859, guid: 9995c1587362f7f4badbd1e29cc1b2d5, type: 3}
   SpawnPos: {fileID: 5939979714657798882}
   Interval: 0.1
+  AutofireShootInterval:
+    CurrentProgress: 0
+    Duration: 1
+  BurstFireAmount: 3
+  BurstFireInterval: 0.1
+  FireMode: 2

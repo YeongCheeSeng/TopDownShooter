@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class WeaponHandler : Weapon
+public class WeaponHandler : MonoBehaviour
 {
     public Weapon CurrentWeapon;
     public Transform GunPosition;
@@ -46,8 +46,30 @@ public class WeaponHandler : Weapon
             CurrentWeapon.Shoot();
             //PlayGunfireSound();
         }
+        else
+            CurrentWeapon.StopShoot();
 
     }
+
+    public void EquipWeapon(GameObject equipWeapon)
+    {
+        if (equipWeapon == null)
+            return;
+
+        if (CurrentWeapon != null)
+        {
+            Destroy(CurrentWeapon.gameObject);
+        }
+
+        GameObject weaponGO = GameObject.Instantiate(equipWeapon, GunPosition);
+        Weapon weapon = weaponGO.GetComponent<Weapon>();
+
+        if (weapon == null)
+            return;
+
+        CurrentWeapon = weapon;
+    }
+
     /*
     public void PlayGunfireSound()
     {
