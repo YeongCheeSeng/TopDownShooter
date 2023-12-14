@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class RandomSoundSpawn : MonoBehaviour
 {
-    public float MaxRandomSpawn = 3;
-    public float MinRandomSpawn = 1;
+    public float SpawnChance = 50f;
 
-    protected float _soundSpawnTimer = 0f;
+    public GameObject[] Feedbacks;
 
-    public GameObject[] Feedback;
+    public GameObject Enemy;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if (_soundSpawnTimer > 0)
-        {
-            _soundSpawnTimer -= Time.deltaTime;
+        float rollDice = Random.Range(1, 100);
+
+        if (rollDice > SpawnChance)
             return;
-        }
 
-        _soundSpawnTimer = Random.Range(MinRandomSpawn, MaxRandomSpawn);
-
-        if (_soundSpawnTimer <= 0)
-            SpawnFeedback();
-            
+        Debug.Log(" spawn sound");
+        SpawnFeedback();
     }
+
     void SpawnFeedback()
     {
-        foreach (var feedback in Feedback)
+        foreach (var feedback in Feedbacks)
         {
+            Debug.Log(feedback);
             GameObject.Instantiate(feedback);
-            feedback.SetActive(false);
         }
     }
 }

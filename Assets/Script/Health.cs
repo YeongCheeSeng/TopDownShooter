@@ -22,6 +22,8 @@ public class Health : MonoBehaviour
     private float _currentHealth = 10f;
     private bool _canDamage = true;
 
+    public GameObject DeadEffect;
+
 
     // Update is called once per frame
     private void Update()
@@ -63,5 +65,6 @@ public class Health : MonoBehaviour
     public void Die()
     {
         Destroy(this.gameObject);
+        GameObject.Instantiate(DeadEffect, transform.position, transform.rotation);
     }
 }
