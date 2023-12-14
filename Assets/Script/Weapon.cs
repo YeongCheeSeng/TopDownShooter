@@ -21,7 +21,19 @@ public class Weapon : MonoBehaviour
 
     private bool _burstFiring = false;
     private float _lastShootRequestAt;
+    private float Spread = 0f;
 
+    public int ProjectileCount = 1;
+    public GameObject[] ReloadFeedbacks;
+    public Cooldown ReloadCoolDown;
+    public int MaxBulletCount = 12;
+
+    public int CurrentBulletCount
+    {
+        get { return currentBulletCount; }
+    }
+
+    protected int currentBulletCount;
 
     public enum FireModes
     {
@@ -30,7 +42,13 @@ public class Weapon : MonoBehaviour
         BurstFire   // =2
     }
 
-    public FireModes FireMode = FireModes.Auto;
+    public FireModes FireMode;
+
+    private void Start()
+    {
+        currentBulletCount = MaxBulletCount;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -47,13 +65,31 @@ public class Weapon : MonoBehaviour
         _canShoot = true;
         */
 
+        UpdateShootCooldown();
+        UpdateReloadCooldown();
+    }
+
+    private void UpdateShootCooldown()
+    {
         if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Finished)
             return;
 
         AutofireShootInterval.CurrentProgress = Cooldown.Progress.Ready;
     }
 
-    
+    private void UpdateReloadCooldown()
+    {
+        if (ReloadCoolDown.CurrentProgress != Cooldown.Progress.Finished)
+            return;
+
+        if (ReloadCoolDown.CurrentProgress == Cooldown.Progress.Finished)
+        {
+            currentBulletCount = MaxBulletCount;
+        }
+
+        ReloadCoolDown.CurrentProgress = Cooldown.Progress.Ready;
+    }
+
 
     public void Shoot()
     {
@@ -68,6 +104,9 @@ public class Weapon : MonoBehaviour
             Debug.LogWarning("Missing SpawnPosition transform");
             return;
         }
+
+        if (ReloadCoolDown.IsOnCooldown || ReloadCoolDown.CurrentProgress != Cooldown.Progress.Ready)
+            return;
 
         switch (FireMode)
         {
@@ -91,15 +130,14 @@ public class Weapon : MonoBehaviour
         //if (!_canShoot)
         //    return;
 
-        if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
-            return;
+        //if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
+        //    return;
 
-        //GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
+        //AutofireShootInterval.StartCooldown();
 
-        AutofireShootInterval.StartCooldown();
-
-        SpawnFeedback();
+        //SpawnFeedback();
     }
+
 
     void SpawnFeedback()
     {
@@ -109,25 +147,62 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    void ShootProjectile()
+    {
+        float randomRot = Random.Range(-Spread, Spread);
+
+        GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation * Quaternion.Euler(0, 0, randomRot));
+        SpawnFeedback();
+    }
+    
+
+
     void AutofireShoot()
     {
-        GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
+        Debug.Log("Auto Fire");
+
+        if (!_canShoot)
+            return;
+
+        if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
+            return;
+
+        ShootProjectile();
+        AutofireShootInterval.StartCooldown();
+
+        currentBulletCount--;
+        StartReload();
     }
+
 
     void SinglefireShoot()
     {
-        
+        Debug.Log("Single Fire");
+
+        if (!_canShoot)
+            return;
+
+        if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
+            return;
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ShootProjectile();
+            AutofireShootInterval.StartCooldown();
+            currentBulletCount--;
+        }
+
+        StartReload();
     }
 
     void BurstfireShoot()
     {
+        Debug.Log("Burst Fire");
+
         if (!_canShoot)
             return;
 
         if (_burstFiring)
-            return;
-
-        if (_singleFireReset)
             return;
 
         if (AutofireShootInterval.CurrentProgress != Cooldown.Progress.Ready)
@@ -141,6 +216,7 @@ public class Weapon : MonoBehaviour
     {
         _burstFiring = true;
         _singleFireReset = false;
+        Debug.Log("start");
 
         if (Time.time - _lastShootRequestAt < BurstFireInterval)
         {
@@ -151,15 +227,19 @@ public class Weapon : MonoBehaviour
 
         while (remainingShots > 0)
         {
-            GameObject bullet = GameObject.Instantiate(Projectile, SpawnPos.position, SpawnPos.rotation);
-            SpawnFeedback();
+            ShootProjectile();
+            currentBulletCount--;
+
+            if (currentBulletCount <= 0)
+                break;
+
+
             _lastShootRequestAt = Time.time;
 
             remainingShots--;
             yield return WaitFor(BurstFireInterval);
         }
 
-        Debug.Log("start corutine");
 
         /*
         while (time > 0)
@@ -174,6 +254,20 @@ public class Weapon : MonoBehaviour
 
         _burstFiring = false;
         AutofireShootInterval.StartCooldown();
+
+        StartReload();
+    }
+    public void StartReload()
+    {
+        if (currentBulletCount <= 0 && !ReloadCoolDown.IsOnCooldown)
+        {
+            foreach (var feedback in ReloadFeedbacks)
+            {
+                GameObject.Instantiate(feedback, transform.position, transform.rotation);
+            }
+
+            ReloadCoolDown.StartCooldown();
+        }
     }
 
     IEnumerator WaitFor(float seconds)

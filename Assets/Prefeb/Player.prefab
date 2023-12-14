@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 8919008582778388685}
   - component: {fileID: 8575937320789529227}
   - component: {fileID: 3752327229235889439}
-  - component: {fileID: 1882041666134689162}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -69,6 +68,7 @@ RectTransform:
   - {fileID: 2256513044571387175}
   - {fileID: 5650007877872637393}
   - {fileID: 5811090102472838077}
+  - {fileID: 1741825580737205942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.371}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -174,8 +174,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba866cc52e5ad64eb3f470b675afe99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Feedback: []
+  Projectile: {fileID: 0}
+  SpawnPos: {fileID: 0}
+  Interval: 0.1
+  AutofireShootInterval:
+    CurrentProgress: 0
+    Duration: 1
+  BurstFireAmount: 3
+  BurstFireInterval: 0.1
+  FireMode: 1
   CurrentWeapon: {fileID: 3719487326859566212}
   GunPosition: {fileID: 5811090102472838077}
+  AimOffset: {fileID: 1741825580737205942}
 --- !u!114 &3752327229235889439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,20 +203,37 @@ MonoBehaviour:
   Invulnerable:
     CurrentProgress: 0
     Duration: 1
---- !u!114 &1882041666134689162
-MonoBehaviour:
+--- !u!1 &2710805856535394179
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241911721334643828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e63d25f1ab85034e976ff7ecd510e1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  Player: {fileID: 2241911721334643828}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1741825580737205942}
+  m_Layer: 0
+  m_Name: AimOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1741825580737205942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710805856535394179}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.011963903, w: 0.9999285}
+  m_LocalPosition: {x: 0.53, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6893864198507890246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8673431080721443056
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 3920438897099971109, guid: e0fb6c0da150ebf4d945b0bb1d0cffe7, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605235775696141503, guid: e0fb6c0da150ebf4d945b0bb1d0cffe7, type: 3}
+      propertyPath: FireMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5605235775696141503, guid: e0fb6c0da150ebf4d945b0bb1d0cffe7, type: 3}
       propertyPath: Interval

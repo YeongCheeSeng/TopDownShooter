@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class WeaponHandler : MonoBehaviour
+public class WeaponHandler : Weapon
 {
     public Weapon CurrentWeapon;
     public Transform GunPosition;
@@ -24,6 +24,7 @@ public class WeaponHandler : MonoBehaviour
     {
         HandleInput();
         HandleWeapon();
+        WeaponTypes();
 
         transform.right = (PointerPosition - (Vector2)transform.position).normalized;
     }
@@ -48,6 +49,19 @@ public class WeaponHandler : MonoBehaviour
         }
         else
             CurrentWeapon.StopShoot();
+
+    }
+
+    public void EquipWeapon(Weapon weapon) 
+    {
+        if (weapon == null)
+            return;
+
+        CurrentWeapon = weapon;
+    }
+
+    protected virtual  void WeaponTypes()
+    {
 
     }
 

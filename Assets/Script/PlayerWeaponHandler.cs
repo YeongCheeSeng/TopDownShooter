@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class PlayerWeaponHandler : WeaponHandler
 {
-    
+
     //public FireModes Mode;
     //public float SingleShot = 1f;
 
+    public Transform AimOffset;
 
     protected override void HandleInput()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             _tryShoot = true;
         }
@@ -21,6 +22,14 @@ public class PlayerWeaponHandler : WeaponHandler
         {
             _tryShoot = false;
         }
+    }
+
+    public Vector2 AimPosition()
+    {
+        if (CurrentWeapon == null)
+            return new Vector2(transform.position.x, transform.position.y);
+
+        return new Vector2(AimOffset.position.x, AimOffset.position.y);
     }
     
 }
