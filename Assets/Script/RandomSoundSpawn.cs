@@ -18,7 +18,7 @@ public class RandomSoundSpawn : MonoBehaviour
         if (rollDice > SpawnChance)
             return;
 
-        Debug.Log(" spawn sound");
+        Debug.Log("spawn sound");
         SpawnFeedback();
     }
 

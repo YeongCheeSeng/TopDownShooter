@@ -14,6 +14,8 @@ public class PlaySoundOnce : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    private Health Health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class PlaySoundOnce : MonoBehaviour
             _audioSource.volume = Random.Range(MinVolume, MaxVolume);
             int randomAudioClip = Random.Range(0, AudioClips.Length - 1);
             //Debug.Log(randomAudioClip);
-
+            
             _audioSource.PlayOneShot(AudioClips[randomAudioClip]);
         }
     }
@@ -33,7 +35,7 @@ public class PlaySoundOnce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_audioSource != null && _audioSource.isPlaying)
+        if (_audioSource != null)
             return;
 
         Die();
@@ -43,4 +45,5 @@ public class PlaySoundOnce : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }

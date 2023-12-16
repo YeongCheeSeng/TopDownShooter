@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Weapon : MonoBehaviour
     public GameObject[] ReloadFeedbacks;
     public Cooldown ReloadCoolDown;
     public int MaxBulletCount = 12;
+
 
     public int CurrentBulletCount
     {
@@ -282,5 +284,6 @@ public class Weapon : MonoBehaviour
     {
         _singleFireReset = true;
     }
+
 }
 

@@ -24,7 +24,6 @@ public class Health : MonoBehaviour
 
     public GameObject DeadEffect;
 
-
     // Update is called once per frame
     private void Update()
     {
@@ -65,6 +64,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         Destroy(this.gameObject);
-        GameObject.Instantiate(DeadEffect, transform.position, transform.rotation);
+        GameObject DeadSpawn = GameObject.Instantiate(DeadEffect, transform.position, transform.rotation);
+        Destroy(DeadSpawn, 3f);
     }
 }

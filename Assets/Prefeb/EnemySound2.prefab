@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c83423898fc47b841896967029dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Object: {fileID: 1576689755579799816, guid: 7a994d963beac5f41bf0da89edb2cc4c, type: 3}
   AudioClips:
   - {fileID: 8300000, guid: 64430a21f4b9b9f4eb5ad784af8f81de, type: 3}
   MinPitch: 0.9
   MaxPitch: 1.1
-  MinVolume: 0.9
-  MaxVolume: 1.1
+  MinVolume: 0.3
+  MaxVolume: 0.5
 --- !u!82 &8652321436880899389
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
