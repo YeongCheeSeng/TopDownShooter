@@ -25,7 +25,7 @@ public class PlaySoundOnce : MonoBehaviour
         {
             _audioSource.pitch = Random.Range(MinPitch, MaxPitch);
             _audioSource.volume = Random.Range(MinVolume, MaxVolume);
-            int randomAudioClip = Random.Range(0, AudioClips.Length - 1);
+            int randomAudioClip = Random.Range(0, AudioClips.Length);
             //Debug.Log(randomAudioClip);
             
             _audioSource.PlayOneShot(AudioClips[randomAudioClip]);
