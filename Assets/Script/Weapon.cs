@@ -265,7 +265,8 @@ public class Weapon : MonoBehaviour
         {
             foreach (var feedback in ReloadFeedbacks)
             {
-                GameObject.Instantiate(feedback, transform.position, transform.rotation);
+                GameObject ReloadFeedback = GameObject.Instantiate(feedback, transform.position, transform.rotation);
+                Destroy(ReloadFeedback,3f);
             }
 
             ReloadCoolDown.StartCooldown();

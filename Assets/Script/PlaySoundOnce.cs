@@ -35,7 +35,7 @@ public class PlaySoundOnce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_audioSource != null)
+        if (_audioSource != null && _audioSource.isPlaying)
             return;
 
         Die();

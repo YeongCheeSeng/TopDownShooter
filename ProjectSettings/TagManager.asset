@@ -8,6 +8,9 @@ TagManager:
   - Projectile
   - Pick up
   - Weapon
+  - Pistol
+  - Rifle
+  - BurstRifle
   layers:
   - Default
   - TransparentFX

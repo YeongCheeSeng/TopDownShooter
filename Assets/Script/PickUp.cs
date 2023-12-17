@@ -12,19 +12,22 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log(col +  " dectected");
+
         if(!((TargetLayerMask.value & ( 1 << col.gameObject.layer)) > 0))
                 return;
 
-        WeaponHandler weaponHandler = GetComponent<WeaponHandler>();
+        WeaponHandler _weaponHandler = col.GetComponent<WeaponHandler>();
 
-        if (weaponHandler == null)
+        if (_weaponHandler == null)
             return;
 
-        weaponHandler.EquipWeapon(Weapon);
+        _weaponHandler.EquipWeapon(Weapon);
 
         foreach (var feedback in PickUpFeedbacks)
         {
-            GameObject.Instantiate(feedback, transform.position, transform.rotation);
+            GameObject PickUpFeedback = GameObject.Instantiate(feedback, transform.position, transform.rotation);
+            Destroy(PickUpFeedback,3f);
         }
 
         Destroy(gameObject);

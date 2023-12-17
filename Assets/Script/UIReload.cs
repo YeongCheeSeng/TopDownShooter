@@ -6,33 +6,37 @@ using UnityEngine.UI;
 
 public class UIReload : MonoBehaviour
 {
-    private Weapon _currentBullet;
+    private Weapon _currentWeapon;
 
     private Transform _weapon;
 
-    private static float TotalBullet;
+    private float TotalBullet;
     public TMP_Text RemainingBulletText;
 
     // Start is called before the first frame update
     void Start()
     {
         TotalBullet = 0;
-
-        _weapon = GameObject.FindGameObjectWithTag("Weapon").transform;
-
-        _currentBullet = _weapon.GetComponent<Weapon>();
-    }
-
-    void BulletCount()
-    {
-        TotalBullet = _currentBullet.CurrentBulletCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("bullet = " + _currentBullet.CurrentBulletCount);
-        BulletCount();
+        _weapon = GameObject.FindGameObjectWithTag("Weapon").transform;
+
+        if (_weapon == null)
+            return;
+
+        _currentWeapon = _weapon.GetComponent<Weapon>();
+
+        TotalBullet = _currentWeapon.CurrentBulletCount;
+        Debug.Log("bullet = " + TotalBullet);
+
+        if (_currentWeapon == null)
+        {
+            Debug.Log("_currentBullet is missing");
+            return;
+        }
 
         if (RemainingBulletText != null)
         {
@@ -44,4 +48,5 @@ public class UIReload : MonoBehaviour
             RemainingBulletText.text = "Bullet: Reloading";
         }
     }
+
 }
