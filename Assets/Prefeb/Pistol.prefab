@@ -63,7 +63,6 @@ MonoBehaviour:
     Duration: 1
   MaxBulletCount: 12
   FireMode: 0
-  WeaponOnHand: 0
 --- !u!1 &5231083120263057185
 GameObject:
   m_ObjectHideFlags: 0

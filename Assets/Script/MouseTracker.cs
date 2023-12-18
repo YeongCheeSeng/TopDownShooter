@@ -13,7 +13,5 @@ public class MouseTracker : MonoBehaviour
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
-
-        Debug.Log("mouse detected");
     }
 }

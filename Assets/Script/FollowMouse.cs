@@ -25,11 +25,5 @@ public class FollowMouse : MonoBehaviour
 
         if (Cursor.visible)
             Cursor.visible = false;
-
-        if (Cursor.visible == false)
-        {
-            if (Input.GetKey(KeyCode.Space))
-                Cursor.visible = true;
-        }
     }
 }
