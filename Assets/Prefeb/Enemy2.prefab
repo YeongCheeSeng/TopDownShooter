@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd9ba9764b164c4bb8baeb08e44eae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnChance: 100
+  SpawnChance: 50
   Feedbacks:
   - {fileID: 318242212649005211, guid: bb0b7991de2cb5b47a8a8bd24c99342b, type: 3}
   Enemy: {fileID: 0}

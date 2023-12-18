@@ -8,8 +8,6 @@ public class RandomSoundSpawn : MonoBehaviour
 
     public GameObject[] Feedbacks;
 
-    public GameObject Enemy;
-
     // Update is called once per frame
     void Start()
     {
@@ -26,8 +24,8 @@ public class RandomSoundSpawn : MonoBehaviour
     {
         foreach (var feedback in Feedbacks)
         {
-            Debug.Log(feedback);
-            GameObject.Instantiate(feedback);
+            GameObject EnemySpawnFeedback = GameObject.Instantiate(feedback);
+            Destroy(EnemySpawnFeedback,2f);
         }
     }
 }
