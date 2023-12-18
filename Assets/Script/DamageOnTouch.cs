@@ -80,7 +80,7 @@ public class DamageOnTouch : MonoBehaviour
         foreach (var feedback in Feedbacks) 
         {
             GameObject FeedbackClone = GameObject.Instantiate(feedback, transform.position, transform.rotation);
-            Destroy(FeedbackClone, 3f);
+            Destroy(FeedbackClone, 1f);
         }
     }
 }

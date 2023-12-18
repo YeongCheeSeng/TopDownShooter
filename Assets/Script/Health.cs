@@ -10,6 +10,12 @@ public class Health : MonoBehaviour
     public delegate void ResetEvent();
     public ResetEvent OnHitReset;
 
+    public delegate void DeathEvent();
+    public DeathEvent OnDeath;
+
+    public delegate void HealEvent(GameObject source);
+    public HealEvent OnHeal;
+
     public float CurrentHealth
     {
         get { return _currentHealth; }
@@ -63,8 +69,18 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        OnDeath?.Invoke();
         Destroy(this.gameObject);
         GameObject DeadSpawn = GameObject.Instantiate(DeadEffect, transform.position, transform.rotation);
-        Destroy(DeadSpawn, 3f);
+        Destroy(DeadSpawn, 1f);
+    }
+
+    public void Heal(float healAmount)
+    {
+        _currentHealth += healAmount;
+
+        _currentHealth = Mathf.Clamp(_currentHealth, 0 , MaxHealth);
+
+        OnHeal?.Invoke(gameObject);
     }
 }

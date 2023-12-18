@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public abstract class PickUp : MonoBehaviour
 {
-    public GameObject Weapon;
+    //public GameObject Weapon;
 
     public GameObject[] PickUpFeedbacks;
 
@@ -18,18 +18,29 @@ public class PickUp : MonoBehaviour
                 return;
 
         WeaponHandler _weaponHandler = col.GetComponent<WeaponHandler>();
+        //Health _health = col.GetComponent<Health>();
 
-        if (_weaponHandler == null)
-            return;
+        //if (_health.CurrentHealth == _health.MaxHealth)
+        //    return;
 
-        _weaponHandler.EquipWeapon(Weapon);
+        //if (_weaponHandler == null)
+        //    return;
+
+        //_weaponHandler.EquipWeapon(Weapon);
+
+        PickedUp(col);
+
+        Destroy(this.gameObject);
 
         foreach (var feedback in PickUpFeedbacks)
         {
             GameObject PickUpFeedback = GameObject.Instantiate(feedback, transform.position, transform.rotation);
-            Destroy(PickUpFeedback,3f);
+            Destroy(PickUpFeedback,1f);
         }
+    }
 
-        Destroy(gameObject);
+    protected virtual void PickedUp(Collider2D col)
+    {
+        
     }
 }

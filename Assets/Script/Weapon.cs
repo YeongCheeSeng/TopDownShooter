@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,6 +70,23 @@ public class Weapon : MonoBehaviour
 
         UpdateShootCooldown();
         UpdateReloadCooldown();
+        Reload();
+    }
+
+    private void Reload()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            currentBulletCount = 0;
+            ReloadCoolDown.StartCooldown();
+
+            foreach (var feedback in ReloadFeedbacks)
+            {
+                GameObject ReloadFeedback = GameObject.Instantiate(feedback, transform.position, transform.rotation);
+                Destroy(ReloadFeedback, 1f);
+            }
+        }
+          
     }
 
     private void UpdateShootCooldown()
@@ -145,7 +163,8 @@ public class Weapon : MonoBehaviour
     {
         foreach (var feedback in Feedback) 
         {
-             GameObject.Instantiate(feedback, SpawnPos.position, SpawnPos.rotation);
+             GameObject spawnfeedback = GameObject.Instantiate(feedback, SpawnPos.position, SpawnPos.rotation);
+            Destroy(spawnfeedback,1f);
         }
     }
 
@@ -266,11 +285,12 @@ public class Weapon : MonoBehaviour
             foreach (var feedback in ReloadFeedbacks)
             {
                 GameObject ReloadFeedback = GameObject.Instantiate(feedback, transform.position, transform.rotation);
-                Destroy(ReloadFeedback,3f);
+                Destroy(ReloadFeedback,1f);
             }
 
             ReloadCoolDown.StartCooldown();
         }
+
     }
 
     IEnumerator WaitFor(float seconds)

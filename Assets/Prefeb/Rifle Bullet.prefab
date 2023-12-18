@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6954d16dc292e6a46933b50ab71d798e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 5
   Speed: 2000
   PushForce: 50
   LifeTime:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5440a9e379dae1b45907670a419a7a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 5
   PushForce: 10
   DamagableFeedback:
   - {fileID: 7374183406761456888, guid: 93d41bae3074d9b4fa99140f9a2f81b3, type: 3}
