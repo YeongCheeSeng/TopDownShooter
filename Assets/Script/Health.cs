@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Health : MonoBehaviour
     private void Update()
     {
         ResetInvulnerable();
+        PlayerDeath();
     }
 
     private void ResetInvulnerable()
@@ -82,5 +84,14 @@ public class Health : MonoBehaviour
         _currentHealth = Mathf.Clamp(_currentHealth, 0 , MaxHealth);
 
         OnHeal?.Invoke(gameObject);
+    }
+
+    public void PlayerDeath()
+    {
+        GameObject Player = GameObject.FindWithTag("Player");
+
+        if (Player == null)
+            
+            SceneManager.LoadScene("GameOver");
     }
 }

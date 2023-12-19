@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FollowMouse : MonoBehaviour
@@ -16,14 +17,13 @@ public class FollowMouse : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (_reticle == null) 
+        if (_reticle == null)
         {
             return;
         }
 
         _reticle.position = Input.mousePosition;
 
-        if (Cursor.visible)
-            Cursor.visible = false;
+        Cursor.visible = false;
     }
 }

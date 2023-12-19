@@ -3,34 +3,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class HomingMissile : Movement
+public class HomingMissile : Projectile
 {
     public Transform Target;
-    public float LifeTime = 1f;
-    private float _timer = 0f;
 
+    private float distance;
 
-    protected override void HandleInput()
+    void Update()
     {
-        if (Target == null)
-            Target = GameObject.FindWithTag("Enemy").transform;
+        distance = Vector2.Distance(transform.position, Target.transform.position);
+        Vector2 direction = Target.transform.position - transform.position;
 
-        if (Target == null)
-            return;
-
-        _inputDirection = (Target.position - transform.position).normalized;
-
-        if (_timer < LifeTime)
-        {
-            _timer += Time.deltaTime;
-            return;
-        }
-
-        Die();
-    }
-
-    protected void Die()
-    {
-        Destroy(gameObject);
+        transform.position = Vector2.MoveTowards(this.transform.position, Target.transform.position, Speed * Time.deltaTime);     
     }
 }

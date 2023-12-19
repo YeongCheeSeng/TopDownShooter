@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7311347916246729268}
   - component: {fileID: 9165256690362145722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3514823724770117801}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.66519356, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5804518a8a3de3f44a73b89f6ebe6534, type: 3}
+  m_Color: {r: 1, g: 0.17654029, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,9 +96,12 @@ GameObject:
   - component: {fileID: 4779023599037712663}
   - component: {fileID: 1213941081917425353}
   - component: {fileID: 2553821862042519739}
-  m_Layer: 0
+  - component: {fileID: 8863623113246843845}
+  - component: {fileID: 1983063960463701110}
+  - component: {fileID: 7730544145681886596}
+  m_Layer: 7
   m_Name: Homing Missile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +129,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470639652382083627}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -148,7 +151,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -203,5 +206,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e2caf357ccbff4d8682a24ac12cb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  Target: {fileID: 0}
+  Damage: 10
+  Speed: 1000
+  PushForce: 50
+  LifeTime:
+    CurrentProgress: 0
+    Duration: 1
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  Target: {fileID: 6143658347457898732, guid: edb7d20ad66f22b4c9ce46fee2e7b7f2, type: 3}
+--- !u!114 &8863623113246843845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470639652382083627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e2caf357ccbff4d8682a24ac12cb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
+  Speed: 100
+  PushForce: 50
+  LifeTime:
+    CurrentProgress: 0
+    Duration: 1
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  Target: {fileID: 7661023213421208927, guid: 7a994d963beac5f41bf0da89edb2cc4c, type: 3}
+--- !u!114 &1983063960463701110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470639652382083627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5440a9e379dae1b45907670a419a7a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1
+  PushForce: 10
+  DamagableFeedback:
+  - {fileID: 7374183406761456888, guid: 93d41bae3074d9b4fa99140f9a2f81b3, type: 3}
+  - {fileID: 2389388949332663091, guid: 9b6811987a4393245b13f24129a7c440, type: 3}
+  AnythingFeedback:
+  - {fileID: 7895365830353286403, guid: 92e829a38fc0cba40a3fe25fddfeebff, type: 3}
+  - {fileID: 4686238259727897946, guid: 024eb1460c1104d4facfc3b4302df54a, type: 3}
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &7730544145681886596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470639652382083627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6954d16dc292e6a46933b50ab71d798e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 10
+  Speed: 1000
+  PushForce: 50
+  LifeTime:
+    CurrentProgress: 0
+    Duration: 1
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
