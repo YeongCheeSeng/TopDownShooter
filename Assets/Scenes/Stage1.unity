@@ -322,18 +322,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2856455069990850453, guid: b614b3dd9d18bb84cb2a077456357834, type: 3}
-      propertyPath: Timer
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856455069990850453, guid: b614b3dd9d18bb84cb2a077456357834, type: 3}
-      propertyPath: GameTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2856455069990850453, guid: b614b3dd9d18bb84cb2a077456357834, type: 3}
-      propertyPath: levelToLoad
-      value: Stage2
-      objectReference: {fileID: 0}
     - target: {fileID: 5276116175664164024, guid: b614b3dd9d18bb84cb2a077456357834, type: 3}
       propertyPath: m_Name
       value: Canvas

@@ -237,6 +237,9 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 72
+  IgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!82 &-6789248830682469826
 AudioSource:
   m_ObjectHideFlags: 0

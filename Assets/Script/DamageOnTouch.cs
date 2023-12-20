@@ -13,6 +13,7 @@ public class DamageOnTouch : MonoBehaviour
 
 
     public LayerMask TargetLayerMask;
+    public LayerMask IgnoreLayerMask;
 
     private void Start()
     {
@@ -21,6 +22,9 @@ public class DamageOnTouch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (((IgnoreLayerMask.value & (1 << col.gameObject.layer)) > 0))
+            return;
+
         if (((TargetLayerMask.value & (1 << col.gameObject.layer)) > 0))
         {
             Damagable(col);
